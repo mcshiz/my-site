@@ -1,6 +1,6 @@
 $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
 // bower:scss
-@import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
+@import "bootstrap-sass-official/assets/stylesheets/bootstrap.scss";
 // endbower
 
 .browsehappy {
@@ -238,10 +238,10 @@ h1 {
 
 
 .contact-section {
-  height: 700px; 
+  height: 615px; 
   background-color: #ffffff; 
   background-image: url("../images/contact.jpg");
-  background-size: 110%;
+  background-size: 116%;
   background-position: center bottom;
   background-repeat: no-repeat;
   p {
@@ -274,6 +274,9 @@ h1 {
 }
 .nav > li > a:hover, .nav > li > a:focus {
 background-color: #D5D5D5;
+}
+.nav-ul li:last-child{
+  padding-right: 20px;
 }
 nav.fixed:hover{
   -webkit-animation: navAnim ease-in 0.35s; /* Chrome, Safari, Opera */

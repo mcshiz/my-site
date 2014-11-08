@@ -4,7 +4,7 @@ $(document).ready(function(){
     e.preventDefault();
     var targetLi = $(this),
         target = targetLi.attr('href'),
-        offsetValue = $(this).data('offset') || 0;
+        offsetValue = 15;
     $('html, body').animate({
       scrollTop: $(target).offset().top-offsetValue
      }, 1000);
