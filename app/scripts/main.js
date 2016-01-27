@@ -10,6 +10,8 @@ $(document).ready(function(){
      }, 1000);
     targetLi.parent('li').addClass('active');
     targetLi.parent('li').siblings('li').removeClass('active');
+    $(".btn-navbar").click(); //bootstrap 2.x
+    $(".navbar-toggle").click() //bootstrap 3.x by Richard
   });
 });
 

@@ -2,7 +2,9 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 // bower:scss
 @import "bootstrap-sass-official/assets/stylesheets/bootstrap.scss";
 // endbower
-
+$break-small: 767px;
+$break-medium: 992px;
+$break-large: 1250px;
 .browsehappy {
   margin: 0.2em 0;
   background: #ccc;
@@ -67,7 +69,7 @@ body {
 }
 
 /* Responsive: Portrait tablets and up */
-@media screen and (min-width: 768px) {
+@media screen and (min-width: $break-small) {
   .container {
     max-width: 730px;
 
@@ -128,12 +130,14 @@ body {
   border: 10px solid #ffffff;
   border-radius: 250px;
   position: relative;
-  background-color: blue;
+  background-color: transparent;
   top: -125px;
-  background: url("../images/headshot.jpg");
-  background-position: 0px -40px;
-  background-size: 230px;
   z-index: 2;
+  transition: border-color 0.5s ease;
+  border-color: white;
+}
+.intro-pic:hover {
+  border-color: black;
 }
 .about-text {
   background-color: #ffffff;
@@ -151,9 +155,13 @@ body {
 }
 #about {
   img {
-    padding-left: 15px;
+    padding-left: 7px;
+    padding-right: 7px;
     margin-top: 75px;
     display: inline-block;
+    transition: 0.6s;
+    transform-style: preserve-3d;
+    position: relative;
   }
     img:not(:nth-of-type(n+4)) {
     margin-top: 15px;
@@ -167,18 +175,15 @@ body {
     cursor: pointer;
   }
   img:hover {
-    -webkit-animation: spin ease-in 1 0.5s;
-    -webkit-transform-origin: center center; /* Chrome, Safari, Opera */
+
+    transform: rotateY(360deg);
   }
   .popover {
     width:600px;  
   }
   
 }
-@-webkit-keyframes spin {
-  from { -webkit-transform: rotate(0deg);  }
-  to {  -webkit-transform: rotate(360deg); }
-}
+
 
 @media (max-width: 550px ){
   #about div  {
@@ -200,11 +205,22 @@ body {
       margin-top: 10%;
       font-size: 1.25em;
     }
+    b {
+      height: 350px; 
+      width: 350px; 
+      display:block; 
+      position: relative;
+    }
+    @media(min-width: $break-medium){
+      p {
+        margin-left: 30px
+      }
+    }
 }
 #nicole {
   margin-bottom: 75px;
 }
-@media (max-width: 767px ){
+@media (max-width: $break-small ){
     .project  {
       margin-top:30px;
     }
@@ -247,27 +263,36 @@ h1 {
   p {
     font-size: 1.25em;
   }
+  @media (min-width: $break-large){
+    background-position-y: -400px;
+  }
+  @media (max-width: $break-small){
+    height: 815px; 
+    background-size: 280%;
+    background-position: center center;
+  }  
 }
+
+
+
 
 .contact-form {
   height: 450px;
-  display: block;
+  display: inline-block;
   background-color: #fff;
   width: 80%;
   margin-top: 25px;
   border-radius: 5px;
   padding: 10px;
-}
-@media (min-width: 1250px ){
-  .contact-section  {
-    background-position-y: -400px;
+  @media (max-width: $break-small ){
+    height: auto;
   }
 }
-  #intro {
-    background-color: #ffffff;
-    top: 70px;
-    /*position: relative;*/
-  }
+
+#intro {
+  background-color: #ffffff;
+  top: 70px;
+}
 
 .form-control-feedback {
   top: 0px;
@@ -292,5 +317,81 @@ nav.fixed:hover{
     img {
       margin-top: 65px;
       cursor: pointer;
+        @media (max-width: $break-small){
+          padding:0px 10px 20px 10px;
+        }
     }
+}
+
+
+
+
+
+
+/* entire container, keeps perspective */
+.flip-container {
+  perspective: 1000;
+}
+  /* flip the pane when hovered */
+  .flip-container:hover .flipper, .flip-container.hover .flipper {
+    transform: rotateY(180deg);
+  }
+
+.flip-container, .front, .back {
+  width: 230px;
+  height: 230px;
+}
+
+/* flip speed goes here */
+.flipper {
+  transition: 0.6s;
+  transform-style: preserve-3d;
+  position: relative;
+}
+
+/* hide back of pane during swap */
+.front, .back {
+  backface-visibility: hidden;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* front pane, placed above back */
+.front {
+  z-index: 2;
+  /* for firefox 31 */
+  transform: rotateY(0deg);
+}
+
+/* back, initially hidden pane */
+.back {
+  transform: rotateY(180deg);
+}
+.flipper b {
+ height: 230px;
+width: 230px;
+display: block;
+position: relative;
+right: 15px;
+border-radius: 250px; 
+}
+
+.front-img {
+-webkit-transform: rotate(30deg);
+-moz-transform: rotate(30deg);
+-ms-transform: rotate(30deg);
+-o-transform: rotate(30deg);
+transform: rotate(11deg);
+display: inline-block;
+background-size: 121%;
+background-position: 2px -8px;
+background-image: url("../images/headshot2.jpeg");
+}
+
+.back-img {
+background-size: 101%;
+background-position: -2px -43px;
+background-image: url("../images/headshot.jpg");
 }
